@@ -10,7 +10,7 @@ public class ConstructDITest {
 	public void testConstructDI() {
 		Quest mockQuest = Mockito.mock(Quest.class);
 		Knight knight = new Knight(mockQuest);
-		knight.embark();
+		knight.embarkOnQuest();
 		Mockito.verify(mockQuest, Mockito.times(1)).embark();
 	}
 	
@@ -18,7 +18,7 @@ public class ConstructDITest {
 	public void testXmlDI() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		Knight knight = context.getBean(Knight.class);
-		knight.embark();
+		knight.embarkOnQuest();
 		context.close();
 	}
 }

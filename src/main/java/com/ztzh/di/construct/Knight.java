@@ -8,7 +8,7 @@ public class Knight {
 		this.quest = quest;
 	}
 	
-	public void embark() {
+	public void embarkOnQuest() {
 		quest.embark();
 	}
 

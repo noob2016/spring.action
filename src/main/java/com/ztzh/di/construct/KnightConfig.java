@@ -3,6 +3,8 @@ package com.ztzh.di.construct;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.ztzh.di.construct.aop.Minstrel;
+
 @Configuration
 public class KnightConfig {
 
@@ -14,5 +16,10 @@ public class KnightConfig {
 	@Bean
 	public Quest quest() {
 		return new SlaveDragonQuest(System.out);
+	}
+	
+	@Bean
+	public Minstrel minstrel() {
+		return new Minstrel(System.out);
 	}
 }
