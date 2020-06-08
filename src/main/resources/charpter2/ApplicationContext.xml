@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan base-package="com.ztzh" />
+
+	<!-- <bean id="knight" class="com.ztzh.di.construct.Knight" > <constructor-arg 
+		ref="quest" /> </bean> <bean id="quest" class="com.ztzh.di.construct.SlaveDragonQuest"> 
+		<constructor-arg value="#{T(System).out}"></constructor-arg> </bean> -->
+		
+	<!-- <bean id="minstrel" class="com.ztzh.di.construct.aop.Minstrel"> 
+		<constructor-arg value="#{T(System).out}"></constructor-arg> 
+	</bean> -->
+	
+	<aop:config>
+		<aop:aspect ref="minstrel">
+			<aop:pointcut id="embark" expression="execution(* *.embarkOnQuest(..))" />
+			<aop:before pointcut-ref="embark" method="beforeQuest" />
+			<aop:after pointcut-ref="embark" method="afterQuest" />
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
